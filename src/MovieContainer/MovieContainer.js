@@ -3,7 +3,7 @@ import App from "../App/App";
 import MiniMovieCards from "../MiniMovieCards/MiniMovieCards";
 import './MovieContainer.css'
 
-const MovieContainer = ({ movieData }) => {
+const MovieContainer = ({ movieData, getDetails }) => {
   let mappedMovies = movieData.map((movie) => {
     return (
       <MiniMovieCards
@@ -12,6 +12,7 @@ const MovieContainer = ({ movieData }) => {
         poster={movie.poster_path}
         rating={movie.average_rating}
         key={movie.id}
+        getDetails={getDetails}
       />
     );
   });
