@@ -3,11 +3,12 @@ import React, { Component } from "react";
 import movieData from "../movieData";
 import MovieContainer from "../MovieContainer/MovieContainer";
 import SpecificMovieCard from "../SpecificMovieCard/SpecificMovieCard";
+import { getData } from "../ApiCalls";
 
 class App extends Component {
   constructor() {
     super();
-    this.state = { movies: movieData.movies, clickedImg: [] };
+    this.state = { movies: [], clickedImg: [] };
   }
 
   getDetails = (event) => {
@@ -17,8 +18,15 @@ class App extends Component {
     this.setState({ clickedImg: clicked });
   };
 
-  resetState = () =>{
-this.setState({ clickedImg: []});
+  resetState = () => {
+    this.setState({ clickedImg: [] });
+  }
+  componentDidMount = () => {
+    getData()
+      .then(data => {
+        this.setState({ movies: [...data[0].movies] })
+        console.log(`this.state.movies`, this.state.movies)
+      })
   }
   render() {
     return (
