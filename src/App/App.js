@@ -12,40 +12,36 @@ class App extends Component {
 
   getDetails = (event) => {
     let movieId = `/movies/${parseInt(event.target.id)}`;
-    getData(movieId).then(data => {
-      console.log(data);
-      this.setState({ clickedImg: new Array(data[0].movie) })
-    })
-    // let clicked = this.state.movies.filter(
-    //   (movie) => movie.id === parseInt(event.target.id)
-    // );
-    // this.setState({ clickedImg: clicked });
+    getData(movieId).then((data) => {
+      this.setState({ clickedImg: new Array(data[0].movie) });
+    });
   };
 
   resetState = () => {
     this.setState({ clickedImg: [] });
-  }
+  };
   componentDidMount = () => {
-    getData('/movies')
-      .then(data => {
-        this.setState({ movies: [...data[0].movies] })
-        console.log(`this.state.movies`, this.state.movies)
-      })
-  }
+    getData("/movies").then((data) => {
+      this.setState({ movies: [...data[0].movies] });
+    });
+  };
   render() {
-    console.log('this CLICKED IMG', this.state.clickedImg)
     return (
-      <div className="App">
-        <h1>Funky Nightshades</h1>
+      <main className="App">
+        <h1 className="header">Funky Nightshades</h1>
+
         {this.state.clickedImg.length ? (
-          <SpecificMovieCard movieData={this.state.clickedImg} resetState={this.resetState} />
+          <SpecificMovieCard
+            movieData={this.state.clickedImg}
+            resetState={this.resetState}
+          />
         ) : (
           <MovieContainer
             movieData={this.state.movies}
             getDetails={this.getDetails}
           />
         )}
-      </div>
+      </main>
     );
   }
 }

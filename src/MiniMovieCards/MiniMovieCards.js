@@ -1,5 +1,4 @@
 import React from "react";
-import MovieContainer from "../MovieContainer/MovieContainer";
 import "./MiniMovieCards.css";
 
 const MiniMovieCards = ({ id, title, poster, rating, getDetails }) => {
@@ -11,9 +10,9 @@ const MiniMovieCards = ({ id, title, poster, rating, getDetails }) => {
         src={poster}
         id={id}
         alt={title}
-        onClick={event => getDetails(event)}
+        onClick={(event) => getDetails(event)}
       />
-      <p>{rating.toFixed(2)}⭐️</p>
+      <p>{rating.toFixed(1)}⭐️</p>
     </div>
   );
 };

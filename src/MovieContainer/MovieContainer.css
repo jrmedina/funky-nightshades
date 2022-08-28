@@ -1,5 +1,4 @@
 .MovieContainer{
-    /* border: blue 2px solid; */
     display: flex;
     flex-wrap: wrap;
 }
