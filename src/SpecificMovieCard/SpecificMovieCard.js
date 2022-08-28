@@ -15,7 +15,8 @@ const SpecificMovieCard = ({ movieData, resetState }) => {
     revenue,
     tagline,
   } = movie;
-  let rating = `⭐️`.repeat(Math.round(average_rating));
+
+  let rating = `🍅 `.repeat(Math.round(average_rating));
 
   return (
     <div className="SpecificMovieCard">
@@ -23,16 +24,16 @@ const SpecificMovieCard = ({ movieData, resetState }) => {
         Return
       </button>
       <h1 className="title">{title}</h1>
-      <p>"{tagline}"</p>
+      <p className="tagline">{tagline}</p>
       <img className="backdrop" src={backdrop_path} alt={title} />
       <p className="overview">{overview}</p>
       <h2>{genres.join(", ")}</h2>
-      <p>
-        Budget: {budget} Revenue: {revenue}
-      </p>
-      <h3>Runtime: {runtime}</h3>
       <h3>{rating} / 10 </h3>
-      <h3>{release_date}</h3>
+      <h3>Runtime: {runtime} minutes</h3>
+      <h3>Release Date: {release_date}</h3>
+      <p>
+        Budget: ${budget.toLocaleString()} Revenue: ${revenue.toLocaleString()}
+      </p>
     </div>
   );
 };

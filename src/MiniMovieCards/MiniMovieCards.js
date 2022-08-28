@@ -12,7 +12,7 @@ const MiniMovieCards = ({ id, title, poster, rating, getDetails }) => {
         alt={title}
         onClick={(event) => getDetails(event)}
       />
-      <p>{rating.toFixed(1)}⭐️</p>
+      <p>{rating.toFixed(1)}🍅</p>
     </div>
   );
 };

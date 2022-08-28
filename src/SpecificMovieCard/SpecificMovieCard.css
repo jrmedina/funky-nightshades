@@ -3,6 +3,31 @@
   src: url(../assets/StyleThief-Mz6w.ttf);
 }
 
+.backdrop {
+  border: 1px solid aliceblue;
+  height: 30%;
+  width: 90%;
+}
+
+.exit {
+  font-size: x-large;
+  color: #9d00ff;
+  margin-top: 5px;
+  background: none;
+  border: 1px #9d00ff solid;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.exit:hover {
+  transform: scale(1.2);
+  color: white;
+}
+
+.overview {
+  width: 60%;
+}
+
 .SpecificMovieCard {
   display: flex;
   flex-direction: column;
@@ -11,14 +36,8 @@
   margin: 0%;
 }
 
-.backdrop {
-  border: 1px solid aliceblue;
-  width: 70%;
-  cursor: pointer;
-}
-
-.overview {
-  width: 60%;
+.tagline {
+  font-style: italic;
 }
 
 .title {
@@ -26,12 +45,4 @@
   text-decoration: underline;
   font-size: 4em;
   letter-spacing: 0.08em;
-}
-
-.exit {
-  font-size: x-large;
-  color: red;
-  margin-top: 5px;
-  background: none;
-  border: 1px red solid;
 }
