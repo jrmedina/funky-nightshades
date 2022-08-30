@@ -1,9 +1,48 @@
-.SpecificMovieCard{
-height:fit-content;
-margin: 0%;
+@font-face {
+  font-family: Imported;
+  src: url(../assets/StyleThief-Mz6w.ttf);
 }
 
 .backdrop {
-    margin: 0%;
-    width: 90%;
+  border: 1px solid aliceblue;
+  height: 30%;
+  width: 90%;
+}
+
+.exit {
+  font-size: x-large;
+  color: #9d00ff;
+  margin-top: 5px;
+  background: none;
+  border: 1px #9d00ff solid;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.exit:hover {
+  transform: scale(1.2);
+  color: white;
+}
+
+.overview {
+  width: 60%;
+}
+
+.SpecificMovieCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: aliceblue;
+  margin: 0%;
+}
+
+.tagline {
+  font-style: italic;
+}
+
+.title {
+  font-family: Imported;
+  text-decoration: underline;
+  font-size: 4em;
+  letter-spacing: 0.08em;
 }

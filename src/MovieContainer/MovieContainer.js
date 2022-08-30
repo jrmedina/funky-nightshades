@@ -1,5 +1,4 @@
 import React from "react";
-import App from "../App/App";
 import MiniMovieCards from "../MiniMovieCards/MiniMovieCards";
 import './MovieContainer.css'
 
