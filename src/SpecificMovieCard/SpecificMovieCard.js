@@ -2,7 +2,8 @@ import React from "react";
 import "./SpecificMovieCard.css";
 
 const SpecificMovieCard = ({ movieData, resetState }) => {
-  const [movie] = movieData;
+  // const [movie] = movieData;
+  console.log('movie data', movieData)
   const {
     title,
     backdrop_path,
@@ -14,11 +15,11 @@ const SpecificMovieCard = ({ movieData, resetState }) => {
     runtime,
     revenue,
     tagline,
-  } = movie;
+  } = movieData;
 
   let rating = `🍅 `.repeat(Math.round(average_rating));
 
-  return (
+  return movieData ? (
     <div className="SpecificMovieCard">
       <button className="exit" onClick={resetState}>
         Return
@@ -27,15 +28,15 @@ const SpecificMovieCard = ({ movieData, resetState }) => {
       <p className="tagline">{tagline}</p>
       <img className="backdrop" src={backdrop_path} alt={title} />
       <p className="overview">{overview}</p>
-      <h2>{genres.join(", ")}</h2>
+      {/* <h2>{genres.join(", ")}</h2> */}
       <h3>{rating} / 10 </h3>
       <h3>Runtime: {runtime} minutes</h3>
       <h3>Release Date: {release_date}</h3>
       <p>
-        Budget: ${budget.toLocaleString()} Revenue: ${revenue.toLocaleString()}
+        {/* Budget: ${budget.toLocaleString()} Revenue: ${revenue.toLocaleString()} */}
       </p>
     </div>
-  );
+  ) : <p>loading...</p>
 };
 
 export default SpecificMovieCard;

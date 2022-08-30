@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import MovieContainer from "../MovieContainer/MovieContainer";
 import SpecificMovieCard from "../SpecificMovieCard/SpecificMovieCard";
 import { getData } from "../ApiCalls";
+import { Route, Switch } from "react-router-dom";
 
 class App extends Component {
   constructor() {
@@ -42,7 +43,28 @@ class App extends Component {
     return (
       <main className="App">
         <h1 className="header">Funky Nightshades</h1>
-        {this.state.error && (
+        <Switch>
+          <Route path="/:id" render={({ match }) => {
+            console.log('match', match)
+            console.log('MOVIES STATE', this.state.movies)
+            const toRender = this.state.movies.find(movie => movie.id === parseInt(match.params.id))
+            console.log({ toRender })
+            return < SpecificMovieCard
+              movieData={[...toRender]}
+              resetState={this.resetState}
+            />
+          }} />
+          <Route
+            path="/"
+            render={() => (
+              <MovieContainer
+                movieData={this.state.movies}
+                getDetails={this.getDetails}
+              />
+            )}
+          />
+        </Switch>
+        {/* {this.state.error && (
           <h3>We apolopgize there was a {this.state.error} error.</h3>
         )}
         {this.state.clickedImg.length ? (
@@ -55,7 +77,7 @@ class App extends Component {
             movieData={this.state.movies}
             getDetails={this.getDetails}
           />
-        )}
+        )} */}
       </main>
     );
   }
