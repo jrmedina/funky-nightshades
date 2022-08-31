@@ -2,21 +2,18 @@ import React, { Component } from "react";
 import { getData } from "../ApiCalls";
 import { Link } from "react-router-dom";
 import "./SpecificMovieCard.css";
-
 class SpecificMovieCard extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      movie: [],
-      isLoading: false,
+      movie: {},
     };
   }
 
   componentDidMount = () => {
-    this.setState({ movie: this.props.movieData, isLoading: false });
-    let movieId = `/movies/${parseInt(this.state.movie.id)}`;
+    let movieId = `/movies/${this.props.id}`;
     getData(movieId, this.handleError).then((data) => {
-      console.log(data);
+      this.setState({ movie: data[0].movie });
     });
   };
 
@@ -40,21 +37,23 @@ class SpecificMovieCard extends Component {
 
     let rating = `🍅 `.repeat(Math.round(average_rating));
 
-    return !this.state.isLoading ? (
+    return (
       <div>
         <Link to="/" className="exit">
-          Return
+          Home
         </Link>
         <h1 className="title">{title}</h1>
         <p className="tagline">{tagline}</p>
         <img className="backdrop" src={backdrop_path} alt={title} />
         <p className="overview">{overview}</p>
+        <h2>{genres}</h2>
         <h3>{rating} / 10 </h3>
         <h3>Runtime: {runtime} minutes</h3>
         <h3>Release Date: {release_date}</h3>
+        <p>
+          Budget: ${budget} Revenue: ${revenue}
+        </p>
       </div>
-    ) : (
-      <h1>Loading...</h1>
     );
   }
 }

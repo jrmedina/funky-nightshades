@@ -2,8 +2,8 @@ import React from "react";
 import MiniMovieCards from "../MiniMovieCards/MiniMovieCards";
 import './MovieContainer.css'
 
-const MovieContainer = ({ movieData, getDetails }) => {
-    let mappedMovies = movieData.map((movie) => {
+const MovieContainer = ({ movieData }) => {
+    let movieCards = movieData.map((movie) => {
         return (
             <MiniMovieCards
                 id={movie.id}
@@ -11,11 +11,10 @@ const MovieContainer = ({ movieData, getDetails }) => {
                 poster={movie.poster_path}
                 rating={movie.average_rating}
                 key={movie.id}
-                getDetails={getDetails}
             />
         );
     });
-    return <div className="MovieContainer">{mappedMovies}</div>;
+    return <div className="MovieContainer">{movieCards}</div>;
 };
 
 export default MovieContainer;
