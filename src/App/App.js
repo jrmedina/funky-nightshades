@@ -40,10 +40,12 @@ class App extends Component {
           <Route
             exact
             path="/:id"
-            render={() => {
+            render={({match}) => {
+              let toRender= this.state.movies.find(movie => movie.id === parseInt(match.params.id)
+              )
               return (
                 <SpecificMovieCard
-                  movieData={this.state.clickedImg}
+                  movieData={toRender}
                   resetState={this.resetState}
                 />
               );

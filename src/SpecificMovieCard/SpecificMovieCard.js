@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { getData } from "../ApiCalls";
 import { Link } from "react-router-dom";
 import "./SpecificMovieCard.css";
 
@@ -7,16 +7,21 @@ class SpecificMovieCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movieDetails: [],
+      movie: [],
       isLoading: false,
     };
   }
 
   componentDidMount = () => {
-    this.setState({
-      isLoading: true,
+    this.setState({ movie: this.props.movieData, isLoading: false });
+    let movieId = `/movies/${parseInt(this.state.movie.id)}`;
+    getData(movieId, this.handleError).then((data) => {
+      console.log(data);
     });
-    this.setState({ movieDetails: this.props.movieData, isLoading: false });
+  };
+
+  handleError = (error) => {
+    this.setState({ error: error });
   };
 
   render() {
@@ -31,7 +36,7 @@ class SpecificMovieCard extends Component {
       runtime,
       revenue,
       tagline,
-    } = this.state.movieDetails;
+    } = this.state.movie;
 
     let rating = `🍅 `.repeat(Math.round(average_rating));
 
