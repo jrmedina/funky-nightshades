@@ -17,13 +17,6 @@ class App extends Component {
     });
   };
 
-  // getTrailers = () => {
-  //   this.state.movies.forEach((movie) => {
-  //     getData(`movies/${movie.id}/videos`).then((data) => console.log('data',data));
-  //   });
-
-  // };
-
   handleError = (error) => {
     this.setState({ error: error });
   };
@@ -31,7 +24,7 @@ class App extends Component {
   getDetails = (event) => {
     let movieId = `/movies/${parseInt(event.target.id)}`;
     getData(movieId, this.handleError).then((data) => {
-      this.setState({ clickedImg: Array(data[0].movie) });
+      this.setState({ clickedImg: data[0].movie });
     });
   };
 
@@ -44,17 +37,20 @@ class App extends Component {
       <main className="App">
         <h1 className="header">Funky Nightshades</h1>
         <Switch>
-          <Route path="/:id" render={({ match }) => {
-            console.log('match', match)
-            console.log('MOVIES STATE', this.state.movies)
-            const toRender = this.state.movies.find(movie => movie.id === parseInt(match.params.id))
-            console.log({ toRender })
-            return < SpecificMovieCard
-              movieData={[...toRender]}
-              resetState={this.resetState}
-            />
-          }} />
           <Route
+            exact
+            path="/:id"
+            render={() => {
+              return (
+                <SpecificMovieCard
+                  movieData={this.state.clickedImg}
+                  resetState={this.resetState}
+                />
+              );
+            }}
+          />
+          <Route
+            exact
             path="/"
             render={() => (
               <MovieContainer
@@ -64,20 +60,6 @@ class App extends Component {
             )}
           />
         </Switch>
-        {/* {this.state.error && (
-          <h3>We apolopgize there was a {this.state.error} error.</h3>
-        )}
-        {this.state.clickedImg.length ? (
-          <SpecificMovieCard
-            movieData={this.state.clickedImg}
-            resetState={this.resetState}
-          />
-        ) : (
-          <MovieContainer
-            movieData={this.state.movies}
-            getDetails={this.getDetails}
-          />
-        )} */}
       </main>
     );
   }

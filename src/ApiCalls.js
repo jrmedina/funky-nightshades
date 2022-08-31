@@ -1,5 +1,5 @@
 const apiCall = (data, handleError) => {
-  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/${data}`)
+  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2${data}`)
     .then((response) => {
       if (response.ok) {
         return response.json();

@@ -1,42 +1,57 @@
-import React from "react";
+import React, { Component } from "react";
+
+import { Link } from "react-router-dom";
 import "./SpecificMovieCard.css";
 
-const SpecificMovieCard = ({ movieData, resetState }) => {
-  // const [movie] = movieData;
-  console.log('movie data', movieData)
-  const {
-    title,
-    backdrop_path,
-    average_rating,
-    release_date,
-    overview,
-    genres,
-    budget,
-    runtime,
-    revenue,
-    tagline,
-  } = movieData;
+class SpecificMovieCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      movieDetails: [],
+      isLoading: false,
+    };
+  }
 
-  let rating = `🍅 `.repeat(Math.round(average_rating));
+  componentDidMount = () => {
+    this.setState({
+      isLoading: true,
+    });
+    this.setState({ movieDetails: this.props.movieData, isLoading: false });
+  };
 
-  return movieData ? (
-    <div className="SpecificMovieCard">
-      <button className="exit" onClick={resetState}>
-        Return
-      </button>
-      <h1 className="title">{title}</h1>
-      <p className="tagline">{tagline}</p>
-      <img className="backdrop" src={backdrop_path} alt={title} />
-      <p className="overview">{overview}</p>
-      {/* <h2>{genres.join(", ")}</h2> */}
-      <h3>{rating} / 10 </h3>
-      <h3>Runtime: {runtime} minutes</h3>
-      <h3>Release Date: {release_date}</h3>
-      <p>
-        {/* Budget: ${budget.toLocaleString()} Revenue: ${revenue.toLocaleString()} */}
-      </p>
-    </div>
-  ) : <p>loading...</p>
-};
+  render() {
+    const {
+      title,
+      backdrop_path,
+      average_rating,
+      release_date,
+      overview,
+      genres,
+      budget,
+      runtime,
+      revenue,
+      tagline,
+    } = this.state.movieDetails;
+
+    let rating = `🍅 `.repeat(Math.round(average_rating));
+
+    return !this.state.isLoading ? (
+      <div>
+        <Link to="/" className="exit">
+          Return
+        </Link>
+        <h1 className="title">{title}</h1>
+        <p className="tagline">{tagline}</p>
+        <img className="backdrop" src={backdrop_path} alt={title} />
+        <p className="overview">{overview}</p>
+        <h3>{rating} / 10 </h3>
+        <h3>Runtime: {runtime} minutes</h3>
+        <h3>Release Date: {release_date}</h3>
+      </div>
+    ) : (
+      <h1>Loading...</h1>
+    );
+  }
+}
 
 export default SpecificMovieCard;
