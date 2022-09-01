@@ -3,11 +3,13 @@ import React, { Component } from "react";
 import MovieContainer from "../MovieContainer/MovieContainer";
 import SpecificMovieCard from "../SpecificMovieCard/SpecificMovieCard";
 import { getData } from "../ApiCalls";
+import { Route, Switch } from "react-router-dom";
+import Footer from "../Footer/Footer";
 
 class App extends Component {
   constructor() {
     super();
-    this.state = { movies: [], clickedImg: [], error: "" };
+    this.state = { movies: [], error: "" };
   }
 
   componentDidMount = () => {
@@ -16,22 +18,8 @@ class App extends Component {
     });
   };
 
-  // getTrailers = () => {
-  //   this.state.movies.forEach((movie) => {
-  //     getData(`movies/${movie.id}/videos`).then((data) => console.log('data',data));
-  //   });
-
-  // };
-
   handleError = (error) => {
     this.setState({ error: error });
-  };
-
-  getDetails = (event) => {
-    let movieId = `/movies/${parseInt(event.target.id)}`;
-    getData(movieId, this.handleError).then((data) => {
-      this.setState({ clickedImg: Array(data[0].movie) });
-    });
   };
 
   resetState = () => {
@@ -42,20 +30,27 @@ class App extends Component {
     return (
       <main className="App">
         <h1 className="header">Funky Nightshades</h1>
-        {this.state.error && (
-          <h3>We apolopgize there was a {this.state.error} error.</h3>
-        )}
-        {this.state.clickedImg.length ? (
-          <SpecificMovieCard
-            movieData={this.state.clickedImg}
-            resetState={this.resetState}
+        <Switch>
+          <Route
+            exact
+            path="/:id"
+            render={({ match }) => {
+              return (
+                <SpecificMovieCard
+                  id={parseInt(match.params.id)}
+                  resetState={this.resetState}
+                />
+              );
+            }}
           />
-        ) : (
-          <MovieContainer
-            movieData={this.state.movies}
-            getDetails={this.getDetails}
+          <Route
+            exact
+            path="/"
+            render={() => <MovieContainer movieData={this.state.movies} />}
           />
-        )}
+        </Switch>
+
+            <Footer/>
       </main>
     );
   }
