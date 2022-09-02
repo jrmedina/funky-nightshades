@@ -7,19 +7,25 @@ const Footer = () => {
   return (
     <div className="Footer">
       <p>Joshua Medina</p>
-      <a href="https://www.linkedin.com/in/joshua-medina/">
+      <a
+        className="linkedinAnchor"
+        href="https://www.linkedin.com/in/joshua-medina/"
+      >
         <img src={LinkedIn} className="img" alt="Joshua Medina" />
       </a>
 
-      <a href="https://github.com/jrmedina">
+      <a className="githubAnchor" href="https://github.com/jrmedina">
         <img src={Github} className="img" alt="Joshua Medina" />
       </a>
 
       <p>Michael Martinelli</p>
-      <a href="https://www.linkedin.com/in/michael-martinelli-7230b5237/">
+      <a
+        className="linkedinAnchor"
+        href="https://www.linkedin.com/in/michael-martinelli-7230b5237/"
+      >
         <img src={LinkedIn} className="img" alt="Michael Martinelli" />
       </a>
-      <a href="https://github.com/mmartinelli22">
+      <a className="githubAnchor" href="https://github.com/mmartinelli22">
         <img src={Github} className="img" alt="Michael Martinelli" />
       </a>
     </div>
