@@ -5,11 +5,12 @@ import "../Footer/Footer.css";
 
 const Footer = () => {
   return (
-    <div className="linkedIn">
+    <div className="Footer">
       <p>Joshua Medina</p>
       <a href="https://www.linkedin.com/in/joshua-medina/">
         <img src={LinkedIn} className="img" alt="Joshua Medina" />
       </a>
+
       <a href="https://github.com/jrmedina">
         <img src={Github} className="img" alt="Joshua Medina" />
       </a>

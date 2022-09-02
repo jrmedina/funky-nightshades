@@ -38,7 +38,7 @@ class SpecificMovieCard extends Component {
     let rating = `🍅 `.repeat(Math.round(average_rating));
 
     return (
-      <div>
+      <div className="SpecificMovieCard">
         <Link to="/" className="exit">
           Home
         </Link>
@@ -46,10 +46,10 @@ class SpecificMovieCard extends Component {
         <p className="tagline">{tagline}</p>
         <img className="backdrop" src={backdrop_path} alt={title} />
         <p className="overview">{overview}</p>
-        <h2>{genres}</h2>
+        <h2 className="genres">{genres}</h2>
         <h3>{rating} / 10 </h3>
         <h3>Runtime: {runtime} minutes</h3>
-        <h3>Release Date: {release_date}</h3>
+        <h3 className="date">Release Date: {release_date}</h3>
         <p>
           Budget: ${budget} Revenue: ${revenue}
         </p>
