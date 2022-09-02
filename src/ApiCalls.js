@@ -1,15 +1,17 @@
-const apiCall = (data, handleError) => {
+const apiCall = (data) => {
   return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2${data}`)
     .then((response) => {
       if (response.ok) {
         return response.json();
       } else {
-        throw Error(response.statusText);
+        throw Error(response);
       }
     })
-    .catch((error) => handleError(error));
+    .catch((error) =>{
+      return true
+    });
 };
-const getData = (data) => {
+const getData = (data, error) => {
   let promise = Promise.all([apiCall(data)]).then((movieData) => {
     return movieData;
   });
