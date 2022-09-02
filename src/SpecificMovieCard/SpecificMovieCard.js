@@ -50,7 +50,7 @@ class SpecificMovieCard extends Component {
         <h3>{rating} / 10 </h3>
         <h3>Runtime: {runtime} minutes</h3>
         <h3 className="date">Release Date: {release_date}</h3>
-        <p>
+        <p className="numeric">
           Budget: ${budget} Revenue: ${revenue}
         </p>
       </div>

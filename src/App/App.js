@@ -14,6 +14,7 @@ class App extends Component {
 
   componentDidMount = () => {
     getData("/movies", this.handleError).then((data) => {
+      data.includes(true) ? this.setState({ error: true }) :
       this.setState({ movies: [...data[0].movies] });
     });
   };
@@ -46,7 +47,9 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={() => <MovieContainer movieData={this.state.movies} />}
+            render={() => 
+                this.state.error ? <h2>We apologize there has been an error!</h2> :
+            <MovieContainer movieData={this.state.movies} />}
           />
         </Switch>
 

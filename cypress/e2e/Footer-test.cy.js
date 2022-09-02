@@ -3,7 +3,7 @@ describe("Footer", () => {
     cy.visit("http://localhost:3000");
   });
 
-it("should render a Footer on page load", () => {
+it("Should render a Footer on page load", () => {
   cy.get(".Footer");
 })
 
