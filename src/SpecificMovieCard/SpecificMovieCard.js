@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { getData } from "../ApiCalls";
 import { Link } from "react-router-dom";
 import "./SpecificMovieCard.css";
+import ReactPlayer from "react-player";
+
 class SpecificMovieCard extends Component {
   constructor() {
     super();
     this.state = {
-      movie: {},
+      movie: {}, videos: []
     };
   }
 
@@ -15,7 +17,10 @@ class SpecificMovieCard extends Component {
     getData(movieId).then((data) => {
       data.includes(true)
         ? this.setState({ error: true })
-        : this.setState({ movie: data[0].movie });
+        : this.setState({
+            movie: data[0].movie,
+            videos: data[0].movie.videos[0],
+          });
     });
   };
 
@@ -31,9 +36,14 @@ class SpecificMovieCard extends Component {
       runtime,
       revenue,
       tagline,
+  
     } = this.state.movie;
 
-    const rating = `🍅 `.repeat(Math.round(average_rating));
+  const rating = `🍅 `.repeat(Math.round(average_rating));
+   const url = `https://www.youtube.com/watch?v=${this.state.videos.key}`
+  
+
+console.log(this.state.videos.key)
 
     return (
       <div className="SpecificMovieCard">
@@ -51,9 +61,15 @@ class SpecificMovieCard extends Component {
         <p className="numeric">
           Budget: ${budget} Revenue: ${revenue}
         </p>
+        <ReactPlayer
+          url={`${url}`}
+          playing={true}
+          light={true}
+         
+        />
       </div>
     );
   }
 }
-
+// https://www.youtube.com/watch?v=${this.state.videos.key}
 export default SpecificMovieCard;
