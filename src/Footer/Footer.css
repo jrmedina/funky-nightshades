@@ -5,7 +5,7 @@
   align-items: center;
   height: 40px;
   width: 100%;
-   padding-top: 40px;
+  padding-top: 40px;
   padding-bottom: 40px;
   background: black;
 }
@@ -14,5 +14,4 @@
   height: 40px;
   width: 40px;
   margin-left: 0.5em;
-
 }

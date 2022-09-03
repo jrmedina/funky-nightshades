@@ -11,22 +11,19 @@
   background: -webkit-linear-gradient(rgb(255, 255, 255), #9d00ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  padding-top: 30px;
+  padding-top: 20px;
 }
 
 .search-box {
   position: absolute;
   left: 97%;
-  bottom: 77.5%;
+  bottom: 65%;
   transform: translate(-90%, -50%);
   background: -webkit-linear-gradient(rgb(255, 255, 255), #9d00ff);
   height: 40px;
   border-radius: 30px;
   padding: 10px;
 }
-
-
-
 
 .search-box:hover > .input {
   width: 230px;

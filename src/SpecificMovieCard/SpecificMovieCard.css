@@ -20,8 +20,7 @@
 .exit:hover {
   transform: scale(1.2);
   color: white;
-    cursor: pointer;
-
+  cursor: pointer;
 }
 
 .overview {
