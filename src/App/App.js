@@ -55,6 +55,8 @@ class App extends Component {
             exact
             path="/"
             render={() =>
+              
+              
               this.state.searchInput ? (
                 <div>
                   <NavBar
