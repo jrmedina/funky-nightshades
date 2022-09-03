@@ -5,23 +5,23 @@
 
 .backdrop {
   border: 1px solid aliceblue;
-  height: 30%;
-  width: 90%;
+  width: 70%;
 }
 
 .exit {
   font-size: x-large;
   color: #9d00ff;
-  margin-top: 5px;
+  margin-top: 50px;
   background: none;
   border: 1px #9d00ff solid;
-  cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
 
 .exit:hover {
   transform: scale(1.2);
   color: white;
+    cursor: pointer;
+
 }
 
 .overview {
@@ -44,6 +44,7 @@
 .title {
   font-family: Imported;
   text-decoration: underline;
-  font-size: 4em;
+  font-size: 6em;
   letter-spacing: 0.08em;
+  margin: 0%;
 }

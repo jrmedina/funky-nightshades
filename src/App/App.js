@@ -6,25 +6,19 @@ import { getData } from "../ApiCalls";
 import { Route, Switch } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
-
 class App extends Component {
   constructor() {
     super();
-    this.state = { movies: [], error: "", searchInput: "", currentResults: [] };
+    this.state = { movies: [], error: "", searchInput: "" };
   }
 
   componentDidMount = () => {
-    getData("/movies").then((data) => {
+    getData('/').then((data) => {     
+       
       data.includes(true)
         ? this.setState({ error: true })
         : this.setState({ movies: [...data[0].movies] });
     });
-
-    let stuff = this.state.movies.filter(movie => {
-      getData(`/movies/${movie.id}`)
-    })
-    console.log(stuff);
-    
   };
 
   resetState = () => {
@@ -32,20 +26,18 @@ class App extends Component {
   };
 
   handleInput = (event) => {
-    const currentResults = this.state.movies.filter((movie) =>
+    const results = this.state.movies.filter((movie) =>
       movie.title.toLowerCase().includes(event.target.value.toLowerCase())
     );
     this.setState({
       searchInput: event.target.value,
-      filteredArray: currentResults,
+      currentResults: results,
     });
   };
 
   render() {
     return (
       <main className="App">
-      
-        <NavBar handleInput={this.handleInput} movies={this.state.movies}/>
         <Switch>
           <Route
             exact
@@ -65,11 +57,21 @@ class App extends Component {
             render={() =>
               this.state.searchInput ? (
                 <div>
-                  <h3>Search results for: {this.state.searchInput}</h3>
-                  <MovieContainer movieData={this.state.filteredArray} />
+                  <NavBar
+                    handleInput={this.handleInput}
+                    movies={this.state.movies}
+                  />
+                  <h2>Search results for: {this.state.searchInput}</h2>
+                  <MovieContainer movieData={this.state.currentResults} />
                 </div>
               ) : (
-                <MovieContainer movieData={this.state.movies} />
+                <div>
+                  <NavBar
+                    handleInput={this.handleInput}
+                    movies={this.state.movies}
+                  />
+                  <MovieContainer movieData={this.state.movies} />
+                </div>
               )
             }
           />
