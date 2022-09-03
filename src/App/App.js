@@ -10,35 +10,42 @@ import NavBar from "../NavBar/NavBar";
 class App extends Component {
   constructor() {
     super();
-    this.state = { movies: [], error: "", searchInput: "", filteredArray: [] };
+    this.state = { movies: [], error: "", searchInput: "", currentResults: [] };
   }
 
   componentDidMount = () => {
-    getData("/movies", this.handleError).then((data) => {
-      data.includes(true) ? this.setState({ error: true }) :
-        this.setState({ movies: [...data[0].movies] });
+    getData("/movies").then((data) => {
+      data.includes(true)
+        ? this.setState({ error: true })
+        : this.setState({ movies: [...data[0].movies] });
     });
-  };
 
-  handleError = (error) => {
-    this.setState({ error: error });
+    let stuff = this.state.movies.filter(movie => {
+      getData(`/movies/${movie.id}`)
+    })
+    console.log(stuff);
+    
   };
 
   resetState = () => {
-    this.setState({ clickedImg: [] });
+    this.setState({ movies: [] });
   };
 
   handleInput = (event) => {
-    this.setState({ searchInput: `${event.target.value}` })
-    console.log('Inputt', this.state.searchInput)
-    let handledVariable = this.state.movies.filter(movie => movie.title.toLowerCase().includes(event.target.value.toLowerCase()))
-    this.setState({ filteredArray: handledVariable })
-  }
+    const currentResults = this.state.movies.filter((movie) =>
+      movie.title.toLowerCase().includes(event.target.value.toLowerCase())
+    );
+    this.setState({
+      searchInput: event.target.value,
+      filteredArray: currentResults,
+    });
+  };
+
   render() {
     return (
       <main className="App">
-        <h1 className="header">Funky Nightshades</h1>
-        <NavBar handleInput={this.handleInput} />
+      
+        <NavBar handleInput={this.handleInput} movies={this.state.movies}/>
         <Switch>
           <Route
             exact
@@ -56,8 +63,15 @@ class App extends Component {
             exact
             path="/"
             render={() =>
-              this.state.searchInput ? <div><p>Search Results For:{this.state.searchInput}</p><MovieContainer movieData={this.state.filteredArray} /></div> :
-                <MovieContainer movieData={this.state.movies} />}
+              this.state.searchInput ? (
+                <div>
+                  <h3>Search results for: {this.state.searchInput}</h3>
+                  <MovieContainer movieData={this.state.filteredArray} />
+                </div>
+              ) : (
+                <MovieContainer movieData={this.state.movies} />
+              )
+            }
           />
         </Switch>
 
