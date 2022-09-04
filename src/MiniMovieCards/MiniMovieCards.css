@@ -29,3 +29,7 @@
 .poster:hover {
   transform: scale(1.1);
 }
+
+.rating {
+padding-bottom: 10px;
+}

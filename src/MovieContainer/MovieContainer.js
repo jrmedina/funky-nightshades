@@ -10,6 +10,7 @@ const MovieContainer = ({ movieData }) => {
         title={movie.title}
         poster={movie.poster_path}
         rating={movie.average_rating}
+        genres={movie.genres}
         key={movie.id}
       />
     );

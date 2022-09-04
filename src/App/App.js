@@ -13,8 +13,7 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-    getData('/').then((data) => {     
-       
+    getData("/").then((data) => {
       data.includes(true)
         ? this.setState({ error: true })
         : this.setState({ movies: [...data[0].movies] });
@@ -55,16 +54,20 @@ class App extends Component {
             exact
             path="/"
             render={() =>
-              
-              
               this.state.searchInput ? (
                 <div>
                   <NavBar
                     handleInput={this.handleInput}
                     movies={this.state.movies}
                   />
-                  <h2>Search results for: {this.state.searchInput}</h2>
-                  <MovieContainer movieData={this.state.currentResults} />
+                  {this.state.currentResults.length ? (
+                    <div>
+                      <h2>Search results for: {this.state.searchInput}</h2>
+                      <MovieContainer movieData={this.state.currentResults} />
+                    </div>
+                  ) : (
+                    <h2>no matching results. . .</h2>
+                  )}
                 </div>
               ) : (
                 <div>
