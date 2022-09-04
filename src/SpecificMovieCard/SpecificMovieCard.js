@@ -15,9 +15,7 @@ class SpecificMovieCard extends Component {
 
   componentDidMount = () => {
     const movieId = `/${this.props.id}`;
-    getData(movieId).then((data) => {
-      console.log(data);
-      
+    getData(movieId).then((data) => {      
       data.includes(true)
         ? this.setState({ error: true })
         : this.setState({
@@ -48,7 +46,7 @@ class SpecificMovieCard extends Component {
 
     return (
       <div className="SpecificMovieCard">
-        <Link to="/" className="exit">
+        <Link to="/funky-nightshades" className="exit">
           Home
         </Link>
         <h1 className="title">{title}</h1>

@@ -52,7 +52,7 @@ class App extends Component {
           />
           <Route
             exact
-            path="/"
+            path="/funky-nightshades/"
             render={() =>
               this.state.searchInput ? (
                 <div>
