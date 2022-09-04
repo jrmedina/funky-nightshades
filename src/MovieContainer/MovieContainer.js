@@ -6,6 +6,7 @@ const MovieContainer = ({ movieData }) => {
   let movieCards = movieData.map((movie) => {
     return (
       <MiniMovieCards
+        genres={movie.genres}
         id={movie.id}
         title={movie.title}
         poster={movie.poster_path}

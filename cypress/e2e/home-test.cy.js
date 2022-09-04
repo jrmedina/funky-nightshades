@@ -1,10 +1,10 @@
 describe("Home page", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000");
+    cy.visit("https://funky-nightshades-7fytt3xkw-jrmedina.vercel.app/");
   });
 
-  it("Should render a header and footer", () => {
-    cy.contains("Funky Nightshades");
+  it("Should render a NavBar and Footer", () => {
+    cy.get(".NavBar").contains("Funky Nightshades");
     cy.get(".Footer");
   });
 
@@ -12,15 +12,39 @@ describe("Home page", () => {
     cy.get(".MovieContainer").find(".MiniMovieCard").should("have.length", 40);
   });
 
-  it("Should recieve an error message if the server does not successfully fetch", () => {
-    cy.intercept(
-      "GET",
-      "https://rancid-tomatillos.herokuapp.com/api/v2/movies",
-      { statusCode: 500, body: "Test 500 Error" }
-    );
-    cy.visit("http://localhost:3000")
+  it("Should receive an error message if the server codes a 500", () => {
+    cy.intercept("GET", "https://funky-nightshades-api.herokuapp.com/", {
+      statusCode: 500,
+      body: "Test 500 Error",
+    });
+    cy.visit("https://funky-nightshades-7fytt3xkw-jrmedina.vercel.app/")
       .wait(3000)
-      .get("h2")
-      .should("contain", "We apologize there has been an error!");
+      .get(".Error")
+      .should(
+        "contain",
+        "We apologize, there seems to have been an error with the server"
+      );
+  });
+
+  it("Should receive an error message if the server codes a 404", () => {
+    cy.intercept("GET", "https://funky-nightshades-api.herokuapp.com/", {
+      statusCode: 404,
+      body: "Test 404 Error",
+    });
+    cy.visit("https://funky-nightshades-7fytt3xkw-jrmedina.vercel.app/")
+      .wait(3000)
+      .get(".Error")
+      .should(
+        "contain",
+        "We apologize, there seems to have been an error with the server"
+      );
+  });
+
+  it("From the home page, a user should be able to click on an image and be redirected", () => {
+    cy.get(".MiniMovieCard").first().find("img").click();
+    cy.url().should(
+      "be.equal",
+      "https://funky-nightshades-7fytt3xkw-jrmedina.vercel.app/694919"
+    );
   });
 });

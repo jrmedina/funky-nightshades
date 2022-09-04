@@ -6,6 +6,7 @@ import { getData } from "../ApiCalls";
 import { Route, Switch } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
+import Error from "../Error/Error";
 class App extends Component {
   constructor() {
     super();
@@ -21,7 +22,7 @@ class App extends Component {
   };
 
   resetState = () => {
-    this.setState({ movies: [] });
+    this.setState({ currentResults: [] });
   };
 
   handleInput = (event) => {
@@ -54,7 +55,9 @@ class App extends Component {
             exact
             path="/"
             render={() =>
-              this.state.searchInput ? (
+              this.state.error ? (
+                <Error />
+              ) : this.state.searchInput ? (
                 <div>
                   <NavBar
                     handleInput={this.handleInput}

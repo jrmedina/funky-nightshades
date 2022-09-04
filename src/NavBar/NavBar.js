@@ -4,7 +4,7 @@ import magnify from "../assets/search.png";
 
 const NavBar = ({ handleInput }) => {
   return (
-    <div>
+    <div className="NavBar">
       <h1 className="header">Funky Nightshades</h1>
       <nav className="search-box">
         <input

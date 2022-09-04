@@ -1,6 +1,6 @@
 describe("Footer", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000");
+    cy.visit("https://funky-nightshades-7fytt3xkw-jrmedina.vercel.app/");
   });
 
   it("Should render a Footer on page load", () => {
