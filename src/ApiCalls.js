@@ -1,5 +1,5 @@
 const apiCall = (data) => {
-  return fetch(`https://rancid-tomatillos.herokuapp.com/api/v2${data}`)
+  return fetch(`https://funky-nightshades-api.herokuapp.com${data}`)
     .then((response) => {
       if (response.ok) {
         return response.json();
@@ -7,8 +7,8 @@ const apiCall = (data) => {
         throw Error(response);
       }
     })
-    .catch((error) =>{
-      return true
+    .catch((error) => {
+      return true;
     });
 };
 const getData = (data, error) => {

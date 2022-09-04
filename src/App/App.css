@@ -1,20 +1,6 @@
-@font-face {
-  font-family: Imported;
-  src: url(../assets/LaconicaRegular-Djv1.ttf);
-}
-
 .App {
   text-align: center;
   background: black;
   color: azure;
-}
-
-.header {
-  font-family: Imported;
-  margin: 0%;
-  font-size: 120px;
-  letter-spacing: 0.08em;
-  background: -webkit-linear-gradient(rgb(255, 255, 255), #9D00FF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  height: 100vh;
 }

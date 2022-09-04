@@ -2,23 +2,31 @@ import React, { Component } from "react";
 import { getData } from "../ApiCalls";
 import { Link } from "react-router-dom";
 import "./SpecificMovieCard.css";
+import ReactPlayer from "react-player";
+
 class SpecificMovieCard extends Component {
   constructor() {
     super();
     this.state = {
       movie: {},
+      videos: [],
     };
   }
 
   componentDidMount = () => {
-    let movieId = `/movies/${this.props.id}`;
-    getData(movieId, this.handleError).then((data) => {
-      this.setState({ movie: data[0].movie });
+    const movieId = `/${this.props.id}`;
+    getData(movieId).then((data) => {
+      console.log(data);
+      
+      data.includes(true)
+        ? this.setState({ error: true })
+        : this.setState({
+            movie: data[0].movie,
+            videos: data[0].movie.videos[0],
+          });
     });
-  };
-
-  handleError = (error) => {
-    this.setState({ error: error });
+  
+    
   };
 
   render() {
@@ -35,7 +43,8 @@ class SpecificMovieCard extends Component {
       tagline,
     } = this.state.movie;
 
-    let rating = `🍅 `.repeat(Math.round(average_rating));
+    const rating = `🍅 `.repeat(Math.round(average_rating));
+    const url = `https://www.youtube.com/watch?v=${this.state.videos.key}`;
 
     return (
       <div className="SpecificMovieCard">
@@ -43,16 +52,28 @@ class SpecificMovieCard extends Component {
           Home
         </Link>
         <h1 className="title">{title}</h1>
-        <p className="tagline">{tagline}</p>
-        <img className="backdrop" src={backdrop_path} alt={title} />
-        <p className="overview">{overview}</p>
-        <h2 className="genres">{genres}</h2>
         <h3>{rating} / 10 </h3>
-        <h3>Runtime: {runtime} minutes</h3>
-        <h3 className="date">Release Date: {release_date}</h3>
-        <p className="numeric">
-          Budget: ${budget} Revenue: ${revenue}
-        </p>
+        <img className="backdrop" src={backdrop_path} alt={title} />
+        <div className="lower">
+          <div className="lower-left">
+            <p className="overview">{overview}</p>
+            <h2 className="genres">{genres}</h2>
+            <h3 className="runtime">Runtime: {runtime}</h3>
+            <h3 className="date">Release Date: {release_date}</h3>
+            <p className="numeric">
+              Budget: {budget} Revenue: {revenue}
+            </p>
+          </div>
+          <div className="lower-right">
+            <ReactPlayer
+              url={`${url}`}
+              playing={true}
+              light={true}
+              className="player"
+            />
+            <p className="tagline">{tagline}</p>
+          </div>
+        </div>
       </div>
     );
   }

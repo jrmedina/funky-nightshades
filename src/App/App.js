@@ -6,39 +6,37 @@ import { getData } from "../ApiCalls";
 import { Route, Switch } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
-
 class App extends Component {
   constructor() {
     super();
-    this.state = { movies: [], error: "", searchInput: "", filteredArray: [] };
+    this.state = { movies: [], error: "", searchInput: "" };
   }
 
   componentDidMount = () => {
-    getData("/movies", this.handleError).then((data) => {
-      data.includes(true) ? this.setState({ error: true }) :
-        this.setState({ movies: [...data[0].movies] });
+    getData("/").then((data) => {
+      data.includes(true)
+        ? this.setState({ error: true })
+        : this.setState({ movies: [...data[0].movies] });
     });
   };
 
-  handleError = (error) => {
-    this.setState({ error: error });
-  };
-
   resetState = () => {
-    this.setState({ clickedImg: [] });
+    this.setState({ movies: [] });
   };
 
   handleInput = (event) => {
-    this.setState({ searchInput: `${event.target.value}` })
-    console.log('Inputt', this.state.searchInput)
-    let handledVariable = this.state.movies.filter(movie => movie.title.toLowerCase().includes(event.target.value.toLowerCase()))
-    this.setState({ filteredArray: handledVariable })
-  }
+    const results = this.state.movies.filter((movie) =>
+      movie.title.toLowerCase().includes(event.target.value.toLowerCase())
+    );
+    this.setState({
+      searchInput: event.target.value,
+      currentResults: results,
+    });
+  };
+
   render() {
     return (
       <main className="App">
-        <h1 className="header">Funky Nightshades</h1>
-        <NavBar handleInput={this.handleInput} />
         <Switch>
           <Route
             exact
@@ -56,8 +54,31 @@ class App extends Component {
             exact
             path="/"
             render={() =>
-              this.state.searchInput ? <div><p>Search Results For:{this.state.searchInput}</p><MovieContainer movieData={this.state.filteredArray} /></div> :
-                <MovieContainer movieData={this.state.movies} />}
+              this.state.searchInput ? (
+                <div>
+                  <NavBar
+                    handleInput={this.handleInput}
+                    movies={this.state.movies}
+                  />
+                  {this.state.currentResults.length ? (
+                    <div>
+                      <h2>Search results for: {this.state.searchInput}</h2>
+                      <MovieContainer movieData={this.state.currentResults} />
+                    </div>
+                  ) : (
+                    <h2>no matching results. . .</h2>
+                  )}
+                </div>
+              ) : (
+                <div>
+                  <NavBar
+                    handleInput={this.handleInput}
+                    movies={this.state.movies}
+                  />
+                  <MovieContainer movieData={this.state.movies} />
+                </div>
+              )
+            }
           />
         </Switch>
 

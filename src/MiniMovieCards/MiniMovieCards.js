@@ -2,13 +2,17 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./MiniMovieCards.css";
 
-const MiniMovieCards = ({ id, title, poster, rating }) => {
+const MiniMovieCards = ({ id, title, poster, rating, genres }) => {
+  
+
+  
   return (
     <div className="MiniMovieCard">
-      <NavLink to={`/${id}`} >
+ 
+      <NavLink to={`/${id}`}>
         <img className="poster" src={poster} id={id} alt={title} />
       </NavLink>
-      <p>{rating.toFixed(1)}🍅</p>
+      <p className="rating">{rating.toFixed(1)}🍅</p>
     </div>
   );
 };

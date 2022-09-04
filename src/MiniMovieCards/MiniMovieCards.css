@@ -16,8 +16,8 @@
 
 .poster {
   border: 1px solid aliceblue;
-  height: 450px;
-  width: 300px;
+  height: 400px;
+  width: 250px;
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
   margin-bottom: 2%;
@@ -28,4 +28,8 @@
 
 .poster:hover {
   transform: scale(1.1);
+}
+
+.rating {
+padding-bottom: 10px;
 }
