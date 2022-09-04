@@ -15,7 +15,6 @@ class App extends Component {
 
   componentDidMount = () => {
     getData("/").then((data) => {
- 
       data.includes(true)
         ? this.setState({ error: true })
         : this.setState({ movies: [...data[0].movies] });

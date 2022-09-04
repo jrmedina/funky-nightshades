@@ -24,7 +24,7 @@ describe("Specific Movie Card", () => {
     cy.get(".SpecificMovieCard").find(".player");
   });
 
-  it("Should recieve an error message if the server codes a 404", () => {
+  it("Should receive an error message if the server codes a 404", () => {
     cy.intercept("GET", "https://funky-nightshades-api.herokuapp.com/694919", {
       statusCode: 404,
       body: "Test 404 Error",

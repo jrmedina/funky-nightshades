@@ -12,7 +12,7 @@ describe("Home page", () => {
     cy.get(".MovieContainer").find(".MiniMovieCard").should("have.length", 40);
   });
 
-  it("Should recieve an error message if the server codes a 500", () => {
+  it("Should receive an error message if the server codes a 500", () => {
     cy.intercept("GET", "https://funky-nightshades-api.herokuapp.com/", {
       statusCode: 500,
       body: "Test 500 Error",
@@ -26,7 +26,7 @@ describe("Home page", () => {
       );
   });
 
-  it("Should recieve an error message if the server codes a 404", () => {
+  it("Should receive an error message if the server codes a 404", () => {
     cy.intercept("GET", "https://funky-nightshades-api.herokuapp.com/", {
       statusCode: 404,
       body: "Test 404 Error",
@@ -40,11 +40,11 @@ describe("Home page", () => {
       );
   });
 
-   it("From the home page, a user should be able to click on an image and be redirected", () => {
-     cy.get(".MiniMovieCard").first().find("img").click();
-     cy.url().should(
-       "be.equal",
-       "https://funky-nightshades-7fytt3xkw-jrmedina.vercel.app/694919"
-     );
-   });
+  it("From the home page, a user should be able to click on an image and be redirected", () => {
+    cy.get(".MiniMovieCard").first().find("img").click();
+    cy.url().should(
+      "be.equal",
+      "https://funky-nightshades-7fytt3xkw-jrmedina.vercel.app/694919"
+    );
+  });
 });

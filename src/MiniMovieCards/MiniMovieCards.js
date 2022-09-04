@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import "./MiniMovieCards.css";
 
 const MiniMovieCards = ({ id, title, poster, rating, genres }) => {
-  
   return (
     <div className="MiniMovieCard">
       <p>{genres[0]}</p>
