@@ -6,6 +6,7 @@ import { getData } from "../ApiCalls";
 import { Route, Switch } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
+import Error from "../Error/Error";
 class App extends Component {
   constructor() {
     super();
@@ -14,6 +15,7 @@ class App extends Component {
 
   componentDidMount = () => {
     getData("/").then((data) => {
+ 
       data.includes(true)
         ? this.setState({ error: true })
         : this.setState({ movies: [...data[0].movies] });
@@ -54,7 +56,9 @@ class App extends Component {
             exact
             path="/"
             render={() =>
-              this.state.searchInput ? (
+              this.state.error ? (
+                <Error />
+              ) : this.state.searchInput ? (
                 <div>
                   <NavBar
                     handleInput={this.handleInput}
