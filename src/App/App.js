@@ -21,7 +21,7 @@ class App extends Component {
   };
 
   resetState = () => {
-    this.setState({ movies: [] });
+    this.setState({ currentResults: [] });
   };
 
   handleInput = (event) => {

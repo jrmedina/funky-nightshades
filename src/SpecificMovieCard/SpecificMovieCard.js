@@ -44,7 +44,7 @@ class SpecificMovieCard extends Component {
 
     return (
       <div className="SpecificMovieCard">
-        <Link to="/" className="exit">
+        <Link to="/" className="exit" onClick={this.props.resetState}>
           Home
         </Link>
         <h1 className="title">{title}</h1>
@@ -54,7 +54,7 @@ class SpecificMovieCard extends Component {
           <div className="lower-left">
             <p className="overview">{overview}</p>
             <h2 className="genres">{genres}</h2>
-            <h3 className="runtime">Runtime: {runtime} minutes</h3>
+            <h3 className="runtime">Runtime: {runtime}</h3>
             <h3 className="date">Release Date: {release_date}</h3>
             <p className="numeric">
               Budget: {budget} Revenue: {revenue}

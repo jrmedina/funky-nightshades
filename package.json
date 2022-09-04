@@ -1,6 +1,5 @@
 {
-  "homepage": "https://jrmedina.github.io/funky-nightshades",
-  "name": "funky-nightshades",
+  
   "version": "0.1.0",
   "private": true,
   "dependencies": {
