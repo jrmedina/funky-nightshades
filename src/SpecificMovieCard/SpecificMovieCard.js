@@ -3,6 +3,7 @@ import { getData } from "../ApiCalls";
 import { Link } from "react-router-dom";
 import "./SpecificMovieCard.css";
 import ReactPlayer from "react-player";
+import Error from "../Error/Error";
 
 class SpecificMovieCard extends Component {
   constructor() {
@@ -42,7 +43,9 @@ class SpecificMovieCard extends Component {
     const rating = `🍅 `.repeat(Math.round(average_rating));
     const url = `https://www.youtube.com/watch?v=${this.state.videos.key}`;
 
-    return (
+    return this.state.error ? (
+      <Error />
+    ) : (
       <div className="SpecificMovieCard">
         <Link to="/" className="exit" onClick={this.props.resetState}>
           Home

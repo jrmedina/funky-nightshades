@@ -17,10 +17,10 @@ describe("Mini movie cards", () => {
         "https://image.tmdb.org/t/p/original//6CoRTJTmijhBLJTUNoVSUNxZMEI.jpg"
       );
     cy.get(".MiniMovieCard").first().find("p").contains("Action");
-     cy.get(".MiniMovieCard").first().find(".rating").contains("6.9");
+     cy.get(".MiniMovieCard").first().find(".rating").contains("6.7");
   });
 
-  it("should be able to gather an ID from the poster image attribute", () => {
+  it("Should be able to gather an ID from the poster image attribute", () => {
     cy.get(".MiniMovieCard").first().find("img").should("have.id", "694919");
   });
 
