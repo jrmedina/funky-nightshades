@@ -1,5 +1,5 @@
 const apiCall = (data) => {
-  return fetch(`http://localhost:3001${data}`)
+  return fetch(`https://funky-nightshades-api.herokuapp.com${data}`)
     .then((response) => {
       if (response.ok) {
         return response.json();
