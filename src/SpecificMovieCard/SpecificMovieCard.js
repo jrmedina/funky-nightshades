@@ -57,7 +57,7 @@ class SpecificMovieCard extends Component {
             <h3 className="runtime">Runtime: {runtime} minutes</h3>
             <h3 className="date">Release Date: {release_date}</h3>
             <p className="numeric">
-              Budget: ${budget} Revenue: ${revenue}
+              Budget: {budget} Revenue: {revenue}
             </p>
           </div>
           <div className="lower-right">
