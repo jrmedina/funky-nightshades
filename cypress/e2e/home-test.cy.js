@@ -1,6 +1,6 @@
 describe("Home page", () => {
   beforeEach(() => {
-    cy.visit("https://funky-nightshades-7fytt3xkw-jrmedina.vercel.app/");
+    cy.visit("https://funky-nightshades-jrmedina.vercel.app/");
   });
 
   it("Should render a NavBar and Footer", () => {
@@ -17,7 +17,7 @@ describe("Home page", () => {
       statusCode: 500,
       body: "Test 500 Error",
     });
-    cy.visit("https://funky-nightshades-7fytt3xkw-jrmedina.vercel.app/")
+    cy.visit("https://funky-nightshades-jrmedina.vercel.app/")
       .wait(3000)
       .get(".Error")
       .should(
@@ -31,7 +31,7 @@ describe("Home page", () => {
       statusCode: 404,
       body: "Test 404 Error",
     });
-    cy.visit("https://funky-nightshades-7fytt3xkw-jrmedina.vercel.app/")
+    cy.visit("https://funky-nightshades-jrmedina.vercel.app/")
       .wait(3000)
       .get(".Error")
       .should(
@@ -44,7 +44,7 @@ describe("Home page", () => {
     cy.get(".MiniMovieCard").first().find("img").click();
     cy.url().should(
       "be.equal",
-      "https://funky-nightshades-7fytt3xkw-jrmedina.vercel.app/694919"
+      "https://funky-nightshades-jrmedina.vercel.app/694919"
     );
   });
 });
