@@ -15,7 +15,7 @@ class SpecificMovieCard extends Component {
 
   componentDidMount = () => {
     const movieId = `/${this.props.id}`;
-    getData(movieId).then((data) => {
+    getData(movieId).then((data) => {      
       data.includes(true)
         ? this.setState({ error: true })
         : this.setState({
@@ -23,6 +23,8 @@ class SpecificMovieCard extends Component {
             videos: data[0].movie.videos[0],
           });
     });
+  
+    
   };
 
   render() {
@@ -44,7 +46,7 @@ class SpecificMovieCard extends Component {
 
     return (
       <div className="SpecificMovieCard">
-        <Link to="/" className="exit">
+        <Link to="/funky-nightshades" className="exit">
           Home
         </Link>
         <h1 className="title">{title}</h1>
@@ -54,7 +56,7 @@ class SpecificMovieCard extends Component {
           <div className="lower-left">
             <p className="overview">{overview}</p>
             <h2 className="genres">{genres}</h2>
-            <h3 className="runtime">Runtime: {runtime} minutes</h3>
+            <h3 className="runtime">Runtime: {runtime}</h3>
             <h3 className="date">Release Date: {release_date}</h3>
             <p className="numeric">
               Budget: {budget} Revenue: {revenue}
