@@ -1,5 +1,5 @@
 <h2 align="center">
-  <img alt="cgapp logo" src="https://user-images.githubusercontent.com/102757890/187091484-1aa32049-b2b4-4dcc-bc3b-40f3436c6e2f.png" width="738px"/><br/>
+  <img alt="funky" src="https://user-images.githubusercontent.com/102757890/187091484-1aa32049-b2b4-4dcc-bc3b-40f3436c6e2f.png" width="738px"/><br/>
   "This project is definitely not Rotten Tomatoes. Nor is it Netflix. Nor is it IMDB. It’s FUNKY NIGHTSHADES."
 </h2>
 

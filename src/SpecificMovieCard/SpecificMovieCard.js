@@ -39,8 +39,7 @@ class SpecificMovieCard extends Component {
       revenue,
       tagline,
     } = this.state.movie;
-
-    const rating = `🍅 `.repeat(Math.round(average_rating));
+    const rating = `⭐️ `.repeat(Math.round(average_rating));
     const url = `https://www.youtube.com/watch?v=${this.state.videos.key}`;
 
     return this.state.error ? (
@@ -51,7 +50,7 @@ class SpecificMovieCard extends Component {
           Home
         </Link>
         <h1 className="title">{title}</h1>
-        <h3>{rating} / 10 </h3>
+        <p className="raing">{rating} / 10</p>
         <img className="backdrop" src={backdrop_path} alt={title} />
         <div className="lower">
           <div className="lower-left">

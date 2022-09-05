@@ -1,6 +1,6 @@
 @font-face {
-  font-family: Imported;
-  src: url(../assets/StyleThief-Mz6w.ttf);
+  font-family: title;
+  src: url(../assets/LaconicaRegular-Djv1.ttf);
 }
 
 .SpecificMovieCard {
@@ -28,7 +28,7 @@
 }
 
 .title {
-  font-family: Imported;
+  font-family: title;
   text-decoration: underline;
   font-size: 6em;
   letter-spacing: 0.1em;
@@ -80,4 +80,8 @@
 .tagline {
   font-size: 20px;
   font-style: italic;
+}
+
+.rating {
+  color: gold;
 }

@@ -1,11 +1,15 @@
 import React from "react";
 import "./NavBar.css";
 import magnify from "../assets/search.png";
+import logo from "../assets/funky-nightshade.svg";
 
 const NavBar = ({ handleInput }) => {
   return (
     <div className="NavBar">
-      <h1 className="header">Funky Nightshades</h1>
+      <div className="header">
+        <h1 className="title">Funky Nightshades</h1>
+        <img className="logo" src={logo} alt="funky"/>
+      </div>
       <nav className="search-box">
         <input
           className="input"
