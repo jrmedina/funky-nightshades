@@ -3,7 +3,7 @@
   src: url(../assets/StyleThief-Mz6w.ttf);
 }
 
-.header {
+.title {
   font-family: Imported;
   margin: 0%;
   font-size: 170px;
@@ -58,4 +58,13 @@
 
 .input::placeholder {
   color: black;
+}
+
+.header {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+.logo {
+  width: 120px;
 }
