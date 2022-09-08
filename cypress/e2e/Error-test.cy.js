@@ -1,6 +1,6 @@
 describe("Footer", () => {
   beforeEach(() => {
-    cy.visit("https://funky-nightshades-jrmedina.vercel.app/");
+    cy.visit("http://localhost:3000");
   });
 
   it("Should not exist by default", () => {
@@ -13,7 +13,7 @@ describe("Footer", () => {
         statusCode: 500,
         body: "Test 500 Error",
       });
-      cy.visit("https://funky-nightshades-jrmedina.vercel.app/")
+      cy.visit("http://localhost:3000")
         .wait(3000)
         .get(".Error")
         .should(

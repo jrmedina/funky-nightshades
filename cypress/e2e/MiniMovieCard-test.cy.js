@@ -1,6 +1,6 @@
 describe("Mini movie cards", () => {
   beforeEach(() => {
-    cy.visit("https://funky-nightshades-jrmedina.vercel.app/");
+    cy.visit("http://localhost:3000");
   });
 
   it("Should render all movie posters", () => {
@@ -25,10 +25,7 @@ describe("Mini movie cards", () => {
   });
 
   it("User Story: The User can click a movie, and be redirected to a new URL", () => {
-    cy.get(".MiniMovieCard").first().find("img").click();
-    cy.url().should(
-      "be.equal",
-      "https://funky-nightshades-jrmedina.vercel.app/694919"
-    );
+    cy.get(".MiniMovieCard").first().find("img").first().click();
+    cy.url().should("be.equal", "http://localhost:3000/694919");
   });
 });

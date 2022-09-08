@@ -1,6 +1,6 @@
 describe("NavBar", () => {
   beforeEach(() => {
-    cy.visit("https://funky-nightshades-jrmedina.vercel.app/");
+    cy.visit("http://localhost:3000");
   });
 
   it("Should render a NavBar", () => {

@@ -1,6 +1,6 @@
 describe("Specific Movie Card", () => {
   beforeEach(() => {
-    cy.visit("https://funky-nightshades-jrmedina.vercel.app/694919");
+    cy.visit("http://localhost:3000/694919");
   });
 
   it("User Story: Once redirected, the user should be able to see ALL movies details", () => {
@@ -29,7 +29,7 @@ describe("Specific Movie Card", () => {
       statusCode: 404,
       body: "Test 404 Error",
     });
-    cy.visit("https://funky-nightshades-jrmedina.vercel.app/694919")
+    cy.visit("http://localhost:3000/694919")
       .wait(3000)
       .get(".Error")
       .should(
@@ -40,9 +40,6 @@ describe("Specific Movie Card", () => {
 
   it(`User Story: When a movie’s details are displayed, the user should have a way to return to the main view of all movies`, () => {
     cy.get(".SpecificMovieCard").find(".exit").click();
-    cy.url().should(
-      "be.equal",
-      "https://funky-nightshades-jrmedina.vercel.app/"
-    );
+    cy.url().should("be.equal", "http://localhost:3000");
   });
 });

@@ -39,7 +39,9 @@ class SpecificMovieCard extends Component {
       revenue,
       tagline,
     } = this.state.movie;
+    
     const rating = `⭐️ `.repeat(Math.round(average_rating));
+
     const url = `https://www.youtube.com/watch?v=${this.state.videos.key}`;
 
     return this.state.error ? (

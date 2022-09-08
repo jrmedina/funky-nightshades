@@ -1,6 +1,6 @@
 describe("Home page", () => {
   beforeEach(() => {
-    cy.visit("https://funky-nightshades-jrmedina.vercel.app/");
+    cy.visit("http://localhost:3000");
   });
 
   it("Should render a NavBar and Footer", () => {
@@ -17,7 +17,7 @@ describe("Home page", () => {
       statusCode: 500,
       body: "Test 500 Error",
     });
-    cy.visit("https://funky-nightshades-jrmedina.vercel.app/")
+    cy.visit("http://localhost:3000")
       .wait(3000)
       .get(".Error")
       .should(
@@ -31,7 +31,7 @@ describe("Home page", () => {
       statusCode: 404,
       body: "Test 404 Error",
     });
-    cy.visit("https://funky-nightshades-jrmedina.vercel.app/")
+    cy.visit("http://localhost:3000")
       .wait(3000)
       .get(".Error")
       .should(
@@ -41,10 +41,7 @@ describe("Home page", () => {
   });
 
   it("From the home page, a user should be able to click on an image and be redirected", () => {
-    cy.get(".MiniMovieCard").first().find("img").click();
-    cy.url().should(
-      "be.equal",
-      "https://funky-nightshades-jrmedina.vercel.app/694919"
-    );
+    cy.get(".MiniMovieCard").first().find("img").first().click();
+    cy.url().should("be.equal", "http://localhost:3000/694919");
   });
 });
