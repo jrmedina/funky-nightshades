@@ -60,11 +60,13 @@
   color: black;
 }
 
+
+.logo {
+  width: 120px;
+}
+
 .header {
   display: flex;
   /* align-items: center; */
   justify-content: center;
-}
-.logo {
-  width: 120px;
 }

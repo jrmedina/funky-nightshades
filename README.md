@@ -15,7 +15,7 @@
 
 [Funky Nightshades](https://funky-nightshades-jrmedina.vercel.app/)
 
-[Funky Nightshades API](https://funky-nightshades-api.herokuapp.com/)
+[Funky Nightshades API](https://funky-nightshades-api.vercel.app/)
 </div>
 
 ## ⚡️ <b>Getting Started:</b>

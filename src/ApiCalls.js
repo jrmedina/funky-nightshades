@@ -1,5 +1,5 @@
 const apiCall = (data) => {
-  return fetch(`https://funky-nightshades-api.herokuapp.com${data}`)
+  return fetch(`https://funky-nightshades-api.vercel.app${data}`)
     .then((response) => {
       if (response.ok) {
         return response.json();
